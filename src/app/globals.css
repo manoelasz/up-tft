@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --bg: #0c0a14;
+  --surface: #15121f;
+  --surface-2: #1f1a2e;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f3f0fa;
+  --text-2: #c9c2dc;
+  --muted: #8a83a0;
+  --accent: #a78bfa;
+  --accent-strong: #8b5cf6;
+  --accent-soft: rgba(167, 139, 250, 0.14);
+
+  /* In-game cost colors. */
+  --cost-1: #9aa4af;
+  --cost-2: #11b288;
+  --cost-3: #2f8be0;
+  --cost-4: #c440da;
+  --cost-5: #ffb93b;
+
+  /* Trait tiers. */
+  --style-1: #a0715e;
+  --style-2: #8f9fb0;
+  --style-3: #e0b84f;
+  --style-4: linear-gradient(135deg, #7ef0d6, #c18df5 50%, #f7a6d0);
+
+  --good: #0ca30c;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-ink: var(--text);
+  --color-ink-2: var(--text-2);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(139, 92, 246, 0.12), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.hex {
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+
+@keyframes live-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(12, 163, 12, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(12, 163, 12, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(12, 163, 12, 0); }
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--good);
+  animation: live-pulse 2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot { animation: none; }
+}
