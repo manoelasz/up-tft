@@ -1,10 +1,12 @@
 import { connection } from "next/server";
-import { getPlayerProfile } from "@/lib/player";
 import { findPlatform } from "@/lib/regions";
-import { RiotError } from "@/lib/riot";
+import { hasRiotKey } from "@/lib/server/config";
+import { getPlayerProfile } from "@/lib/server/player";
+import { RiotError } from "@/lib/server/riot/client";
+import type { ApiError } from "@/lib/types";
 
 function fail(status: number, error: string) {
-  return Response.json({ error }, { status, headers: { "Cache-Control": "no-store" } });
+  return Response.json({ error } satisfies ApiError, { status, headers: { "Cache-Control": "no-store" } });
 }
 
 export async function GET(request: Request) {
@@ -14,7 +16,7 @@ export async function GET(request: Request) {
   const name = params.get("name")?.trim();
   const tag = params.get("tag")?.trim();
   if (!platform || !name || !tag) return fail(400, "Informe o servidor e o Riot ID no formato Nome#TAG.");
-  if (!process.env.RIOT_API_KEY) return fail(503, "A busca de jogador precisa de uma chave da Riot configurada.");
+  if (!hasRiotKey()) return fail(503, "A busca de jogador precisa de uma chave da Riot configurada.");
 
   try {
     const profile = await getPlayerProfile(platform, name, tag);

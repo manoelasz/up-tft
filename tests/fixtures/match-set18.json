@@ -1,0 +1,1147 @@
+{
+ "metadata": {
+  "match_id": "BR1_TEST",
+  "participants": [
+   "player-1",
+   "player-2",
+   "player-3",
+   "player-4",
+   "player-5",
+   "player-6",
+   "player-7",
+   "player-8"
+  ]
+ },
+ "info": {
+  "game_datetime": 1790000000000,
+  "game_version": "TFT Unreal Version ?.?.?.?",
+  "queue_id": 1100,
+  "tft_set_number": 18,
+  "participants": [
+   {
+    "puuid": "player-1",
+    "placement": 1,
+    "level": 9,
+    "traits": [
+     {
+      "name": "DA_18_Adaptor",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Greenfather",
+      "num_units": 1,
+      "style": 3,
+      "tier_current": 1,
+      "tier_total": 1
+     },
+     {
+      "name": "DA_18_Inferno",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_18_Invoker",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_18_Lunar",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_Primal18",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 2
+     },
+     {
+      "name": "DA_18_Rapidfire",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_18_Slayer",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Vanguard",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Caustic",
+      "num_units": 1,
+      "style": 3,
+      "tier_current": 1,
+      "tier_total": 1
+     },
+     {
+      "name": "DA_Emerald18",
+      "num_units": 1,
+      "style": 3,
+      "tier_current": 1,
+      "tier_total": 1
+     },
+     {
+      "name": "DA_Juggernaut18",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     }
+    ],
+    "units": [
+     {
+      "character_id": "DA_18_Varus",
+      "itemNames": [],
+      "rarity": 0,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_KogMaw18_AD",
+      "itemNames": [
+       "DA_Component_RecurveBow"
+      ],
+      "rarity": 2,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Vi18",
+      "itemNames": [],
+      "rarity": 2,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Amumu18",
+      "itemNames": [
+       "DA_AdaptiveHelm",
+       "DA_WarmogsArmor",
+       "DA_SpiritVisage"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Diana",
+      "itemNames": [],
+      "rarity": 2,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Aphelios",
+      "itemNames": [
+       "DA_HextechGunblade",
+       "DA_RedBuff",
+       "DA_GiantSlayer"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Nidalee18_AP",
+      "itemNames": [
+       "DA_HandOfJustice",
+       "DA_SteraksGage",
+       "DA_EdgeOfNight"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Taric18",
+      "itemNames": [
+       "DA_ThiefsGloves",
+       "DA_SteraksGage",
+       "DA_RedBuff"
+      ],
+      "rarity": 4,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Ivern",
+      "itemNames": [
+       "DA_18_EmblemInvoker",
+       "DA_RabadonsDeathcap",
+       "DA_GiantSlayer"
+      ],
+      "rarity": 4,
+      "tier": 1
+     }
+    ]
+   },
+   {
+    "puuid": "player-2",
+    "placement": 2,
+    "level": 9,
+    "traits": [
+     {
+      "name": "DA_18_Blossom",
+      "num_units": 3,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 5
+     },
+     {
+      "name": "DA_18_Brawler",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Coven",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_18_Invoker",
+      "num_units": 4,
+      "style": 2,
+      "tier_current": 3,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_18_Lunar",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_Riftbeast18",
+      "num_units": 3,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_18_Spellweaver",
+      "num_units": 3,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Vanguard",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_Emerald18",
+      "num_units": 1,
+      "style": 3,
+      "tier_current": 1,
+      "tier_total": 1
+     },
+     {
+      "name": "DA_AluneUniqueTrait18",
+      "num_units": 1,
+      "style": 3,
+      "tier_current": 1,
+      "tier_total": 1
+     }
+    ],
+    "units": [
+     {
+      "character_id": "DA_Karma18",
+      "itemNames": [],
+      "rarity": 0,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Sett",
+      "itemNames": [
+       "DA_SteraksGage",
+       "DA_SunfireCape"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Krug18",
+      "itemNames": [],
+      "rarity": 2,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Sentinel18",
+      "itemNames": [
+       "DA_AdaptiveHelm",
+       "DA_GargoyleStoneplate",
+       "DA_SteadfastHeart"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Sentry",
+      "itemNames": [],
+      "rarity": 0,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Ahri",
+      "itemNames": [
+       "DA_JeweledGauntlet",
+       "DA_18_EmblemInvoker",
+       "DA_StrikersFlail"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Morgana",
+      "itemNames": [
+       "DA_HextechGunblade",
+       "DA_VoidStaff",
+       "DA_Morellonomicon"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Alune",
+      "itemNames": [
+       "DA_HextechGunblade"
+      ],
+      "rarity": 4,
+      "tier": 1
+     },
+     {
+      "character_id": "DA_Taric18",
+      "itemNames": [],
+      "rarity": 4,
+      "tier": 1
+     }
+    ]
+   },
+   {
+    "puuid": "player-3",
+    "placement": 3,
+    "level": 9,
+    "traits": [
+     {
+      "name": "DA_18_Battlemage",
+      "num_units": 1,
+      "style": 3,
+      "tier_current": 1,
+      "tier_total": 1
+     },
+     {
+      "name": "DA_18_Blackthorn",
+      "num_units": 6,
+      "style": 4,
+      "tier_current": 3,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Defender",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Fae",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 2
+     },
+     {
+      "name": "DA_18_Executioner",
+      "num_units": 4,
+      "style": 4,
+      "tier_current": 3,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Slayer",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Spellweaver",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Sprykin",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Summoner",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 2
+     },
+     {
+      "name": "DA_FloraFatalis18",
+      "num_units": 2,
+      "style": 4,
+      "tier_current": 2,
+      "tier_total": 2
+     },
+     {
+      "name": "DA_18_ZyraUniqueTrait",
+      "num_units": 1,
+      "style": 3,
+      "tier_current": 1,
+      "tier_total": 1
+     }
+    ],
+    "units": [
+     {
+      "character_id": "DA_18_Soraka",
+      "itemNames": [
+       "DA_18_EmblemBlackthorn",
+       "DA_Morellonomicon",
+       "DA_SpearOfShojin"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Azir",
+      "itemNames": [],
+      "rarity": 2,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Malphite",
+      "itemNames": [
+       "DA_WarmogsArmor",
+       "DA_WarmogsArmor",
+       "DA_TitansResolve"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Lillia",
+      "itemNames": [
+       "DA_ThiefsGloves",
+       "DA_BrambleVest",
+       "DA_SteadfastHeart"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Zyra",
+      "itemNames": [
+       "DA_18_EmblemExecutioner",
+       "DA_18_EmblemBlackthorn",
+       "DA_Artifact_BlightingJewel"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Fiddlesticks18",
+      "itemNames": [
+       "DA_18_EmblemExecutioner",
+       "DA_Component_GiantsBelt"
+      ],
+      "rarity": 2,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Veigar",
+      "itemNames": [],
+      "rarity": 0,
+      "tier": 1
+     },
+     {
+      "character_id": "DA_18_Warwick",
+      "itemNames": [],
+      "rarity": 1,
+      "tier": 1
+     },
+     {
+      "character_id": "DA_18_Lillia",
+      "itemNames": [],
+      "rarity": 3,
+      "tier": 2
+     }
+    ]
+   },
+   {
+    "puuid": "player-4",
+    "placement": 4,
+    "level": 9,
+    "traits": [
+     {
+      "name": "DA_18_Battlemage",
+      "num_units": 1,
+      "style": 3,
+      "tier_current": 1,
+      "tier_total": 1
+     },
+     {
+      "name": "DA_18_Blackthorn",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Blossom",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 5
+     },
+     {
+      "name": "DA_18_Brawler",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Adaptor",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Hunter",
+      "num_units": 4,
+      "style": 2,
+      "tier_current": 3,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_18_Invoker",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_Primal18",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 2
+     },
+     {
+      "name": "DA_Riftbeast18",
+      "num_units": 3,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_18_Vanguard",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Caustic",
+      "num_units": 1,
+      "style": 3,
+      "tier_current": 1,
+      "tier_total": 1
+     },
+     {
+      "name": "DA_FloraFatalis18",
+      "num_units": 1,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 2
+     }
+    ],
+    "units": [
+     {
+      "character_id": "DA_18_Malphite",
+      "itemNames": [
+       "DA_WarmogsArmor",
+       "DA_Crownguard",
+       "DA_BrambleVest"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Cinderling18",
+      "itemNames": [],
+      "rarity": 0,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_RekSai",
+      "itemNames": [],
+      "rarity": 0,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Sentinel18",
+      "itemNames": [
+       "DA_18_EmblemFloraFatalis",
+       "DA_Component_NegatronCloak",
+       "DA_AdaptiveHelm"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Nidalee18_AP",
+      "itemNames": [
+       "DA_SpearOfShojin",
+       "DA_18_EmblemHunter",
+       "DA_InfinityEdge"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Krug18",
+      "itemNames": [],
+      "rarity": 2,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Ashe",
+      "itemNames": [
+       "DA_RedBuff"
+      ],
+      "rarity": 4,
+      "tier": 1
+     },
+     {
+      "character_id": "DA_KogMaw18_AD",
+      "itemNames": [],
+      "rarity": 2,
+      "tier": 1
+     },
+     {
+      "character_id": "DA_18_Sivir",
+      "itemNames": [
+       "DA_SpearOfShojin",
+       "DA_KrakensFury",
+       "DA_KrakensFury"
+      ],
+      "rarity": 3,
+      "tier": 2
+     }
+    ]
+   },
+   {
+    "puuid": "player-5",
+    "placement": 5,
+    "level": 9,
+    "traits": [
+     {
+      "name": "DA_18_Blossom",
+      "num_units": 3,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 5
+     },
+     {
+      "name": "DA_18_Brawler",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Coven",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_18_Greenfather",
+      "num_units": 1,
+      "style": 3,
+      "tier_current": 1,
+      "tier_total": 1
+     },
+     {
+      "name": "DA_18_Invoker",
+      "num_units": 3,
+      "style": 2,
+      "tier_current": 2,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_Riftbeast18",
+      "num_units": 3,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_18_Spellweaver",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Vanguard",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_Emerald18",
+      "num_units": 1,
+      "style": 3,
+      "tier_current": 1,
+      "tier_total": 1
+     }
+    ],
+    "units": [
+     {
+      "character_id": "DA_18_Ahri",
+      "itemNames": [
+       "DA_SpearOfShojin",
+       "DA_RabadonsDeathcap",
+       "DA_JeweledGauntlet"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Krug18",
+      "itemNames": [],
+      "rarity": 2,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Morgana",
+      "itemNames": [
+       "DA_ThiefsGloves",
+       "DA_Bloodthirster",
+       "DA_HextechGunblade"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Sentinel18",
+      "itemNames": [
+       "DA_SpiritVisage",
+       "DA_WarmogsArmor",
+       "DA_GargoyleStoneplate"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Sett",
+      "itemNames": [],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Taric18",
+      "itemNames": [
+       "DA_SteraksGage",
+       "DA_SteadfastHeart"
+      ],
+      "rarity": 4,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Karma18",
+      "itemNames": [],
+      "rarity": 0,
+      "tier": 1
+     },
+     {
+      "character_id": "DA_18_Ivern",
+      "itemNames": [],
+      "rarity": 4,
+      "tier": 1
+     },
+     {
+      "character_id": "DA_18_Sentry",
+      "itemNames": [
+       "DA_RedBuff"
+      ],
+      "rarity": 0,
+      "tier": 1
+     }
+    ]
+   },
+   {
+    "puuid": "player-6",
+    "placement": 6,
+    "level": 8,
+    "traits": [
+     {
+      "name": "DA_18_Blossom",
+      "num_units": 3,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 5
+     },
+     {
+      "name": "DA_18_Brawler",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Defender",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Elderwood",
+      "num_units": 3,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 5
+     },
+     {
+      "name": "DA_18_Hunter",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 4
+     },
+     {
+      "name": "DA_18_Executioner",
+      "num_units": 3,
+      "style": 2,
+      "tier_current": 2,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Spellweaver",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Sprykin",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_FloraFatalis18",
+      "num_units": 2,
+      "style": 4,
+      "tier_current": 2,
+      "tier_total": 2
+     }
+    ],
+    "units": [
+     {
+      "character_id": "DA_18_Sett",
+      "itemNames": [
+       "DA_GargoyleStoneplate",
+       "DA_SteraksGage"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Fiddlesticks18",
+      "itemNames": [],
+      "rarity": 2,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Yunara",
+      "itemNames": [],
+      "rarity": 1,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Ornn",
+      "itemNames": [],
+      "rarity": 0,
+      "tier": 1
+     },
+     {
+      "character_id": "DA_18_Ashe",
+      "itemNames": [
+       "DA_RedBuff",
+       "DA_LastWhisper",
+       "DA_SpearOfShojin"
+      ],
+      "rarity": 4,
+      "tier": 1
+     },
+     {
+      "character_id": "DA_18_Ezreal",
+      "itemNames": [
+       "DA_Deathblade",
+       "DA_StrikersFlail",
+       "DA_HextechGunblade"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Soraka",
+      "itemNames": [
+       "DA_HextechGunblade",
+       "DA_SpearOfShojin"
+      ],
+      "rarity": 3,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_GnarSmall",
+      "itemNames": [],
+      "rarity": 4,
+      "tier": 1
+     }
+    ]
+   },
+   {
+    "puuid": "player-7",
+    "placement": 7,
+    "level": 6,
+    "traits": [
+     {
+      "name": "DA_18_Blackthorn",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Brawler",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Defender",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Elderwood",
+      "num_units": 3,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 5
+     },
+     {
+      "name": "DA_18_Spellweaver",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Sprykin",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 3
+     }
+    ],
+    "units": [
+     {
+      "character_id": "DA_18_RekSai",
+      "itemNames": [],
+      "rarity": 0,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Veigar",
+      "itemNames": [
+       "DA_JeweledGauntlet",
+       "DA_GiantSlayer",
+       "DA_BlueBuff"
+      ],
+      "rarity": 0,
+      "tier": 3
+     },
+     {
+      "character_id": "DA_18_LeBlanc",
+      "itemNames": [
+       "DA_Morellonomicon"
+      ],
+      "rarity": 1,
+      "tier": 3
+     },
+     {
+      "character_id": "DA_18_Ornn",
+      "itemNames": [
+       "DA_DragonsClaw",
+       "DA_SteraksGage",
+       "DA_SteadfastHeart"
+      ],
+      "rarity": 0,
+      "tier": 3
+     },
+     {
+      "character_id": "DA_18_RekSai",
+      "itemNames": [],
+      "rarity": 0,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Alistar",
+      "itemNames": [
+       "DA_IonicSpark"
+      ],
+      "rarity": 1,
+      "tier": 2
+     }
+    ]
+   },
+   {
+    "puuid": "player-8",
+    "placement": 8,
+    "level": 6,
+    "traits": [
+     {
+      "name": "DA_18_Blackthorn",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Brawler",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Defender",
+      "num_units": 2,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Elderwood",
+      "num_units": 3,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 5
+     },
+     {
+      "name": "DA_18_Spellweaver",
+      "num_units": 3,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_18_Sprykin",
+      "num_units": 1,
+      "style": 0,
+      "tier_current": 0,
+      "tier_total": 3
+     },
+     {
+      "name": "DA_FloraFatalis18",
+      "num_units": 1,
+      "style": 1,
+      "tier_current": 1,
+      "tier_total": 2
+     }
+    ],
+    "units": [
+     {
+      "character_id": "DA_18_RekSai",
+      "itemNames": [
+       "DA_ProtectorsVow",
+       "DA_ProtectorsVow",
+       "DA_Artifact_VoidGauntlet"
+      ],
+      "rarity": 0,
+      "tier": 3
+     },
+     {
+      "character_id": "DA_18_Ornn",
+      "itemNames": [
+       "DA_WarmogsArmor",
+       "DA_DragonsClaw",
+       "DA_SpiritVisage"
+      ],
+      "rarity": 0,
+      "tier": 3
+     },
+     {
+      "character_id": "DA_18_Veigar",
+      "itemNames": [
+       "DA_JeweledGauntlet",
+       "DA_BlueBuff"
+      ],
+      "rarity": 0,
+      "tier": 3
+     },
+     {
+      "character_id": "DA_18_LeBlanc",
+      "itemNames": [],
+      "rarity": 1,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_18_Alistar",
+      "itemNames": [],
+      "rarity": 1,
+      "tier": 2
+     },
+     {
+      "character_id": "DA_Fiddlesticks18",
+      "itemNames": [],
+      "rarity": 2,
+      "tier": 1
+     }
+    ]
+   }
+  ]
+ }
+}

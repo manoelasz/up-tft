@@ -19,16 +19,48 @@ Abra http://localhost:3000. Sem chave da Riot o site roda em **modo demonstraç�
 
 Chaves de desenvolvimento expiram a cada 24h e permitem 100 requisições a cada 2 minutos; os valores padrão de coleta (20 jogadores × 5 partidas, até 60 partidas novas por ciclo) cabem nesse limite. Com uma chave de produção, aumente `RIOT_PLAYERS`, `RIOT_MAX_NEW_MATCHES` e os limites `RIOT_RATE_*`.
 
-## Como funciona
+## Estrutura
 
-- `src/lib/riot.ts` — cliente da Riot API com rate limiter (janela de 1s e de 2min) e retry em 429.
-- `src/lib/meta.ts` — coleta incremental: busca a liga, os IDs das partidas recentes e só baixa partidas novas. Guarda até 1.500 partidas em memória e serve o último snapshot enquanto atualiza em segundo plano.
-- `src/lib/aggregate.ts` — identifica cada comp pela sinergia com mais unidades + carry (campeão com mais itens), e ranqueia pela taxa de vitória, exigindo um mínimo de partidas (`MIN_COMP_GAMES`, padrão 5).
-- `src/lib/staticData.ts` — nomes em português, fotos, alcance e sinergias de cada campeão/item, do CommunityDragon (`CDRAGON_LOCALE`, padrão `pt_br`).
-- `src/lib/board.ts` — posicionamento sugerido no tabuleiro (a API da Riot não informa posições).
-- `src/lib/demo.ts` — gera partidas sintéticas no mesmo formato da Riot.
-- `src/lib/player.ts` + `/api/player` — perfil do jogador (conta, elo, últimas `PLAYER_MATCHES` partidas, padrão 15), com cache de 2 min. Partidas ficam em cache e são compartilhadas com a coleta do meta.
-- `/api/meta` — devolve o snapshot; o front consulta a cada 60s (SWR).
+```
+src/
+  app/                 rotas (páginas finas + API em app/api)
+  components/
+    ui/                peças genéricas: Card, Stat, PageHeader, DataTable, SegmentedControl…
+    game/              peças do TFT: ChampionIcon, ItemIcon (com receita), TraitChip, Board, badges
+    comps/             card de comp da página inicial
+    champions/         tabela de campeões
+    player/            busca e perfil de jogador
+    layout/            menu lateral
+  hooks/               useMeta, usePlayerProfile, useRecentSearches
+  lib/
+    types.ts           formato dos dados servidos pela API
+    format.ts          números e datas em pt-BR
+    regions.ts         servidores da Riot e parsing de Riot ID
+    board.ts           posicionamento sugerido no tabuleiro
+    server/            só roda no servidor (import "server-only")
+      config.ts        todas as variáveis de ambiente
+      riot/            cliente (rate limit, retry), endpoints e tipos da Riot API
+      staticData.ts    nomes, ícones e receitas do CommunityDragon
+      comps.ts         como uma comp é identificada (sinergia principal + carry)
+      aggregate.ts     ranking das comps e estatísticas de campeões
+      meta.ts          coleta incremental e snapshot do /api/meta
+      player.ts        perfil do /api/player
+      demo.ts          partidas sintéticas para o modo demonstração
+tests/                 testes (Vitest) da lógica pura, com uma partida real anonimizada
+```
+
+- O ranking ordena por taxa de vitória, exigindo um mínimo de partidas (`MIN_COMP_GAMES`).
+- A Riot não informa posições no tabuleiro; o tabuleiro mostra um posicionamento sugerido.
+- Partidas e perfis ficam em memória no servidor; partidas são compartilhadas entre o meta e as buscas.
+
+## Comandos
+
+| Comando | O que faz |
+|---|---|
+| `npm run dev` | servidor de desenvolvimento |
+| `npm test` | testes |
+| `npm run lint` | lint |
+| `npm run build` | build de produção |
 
 ## Abas
 

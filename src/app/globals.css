@@ -8,9 +8,10 @@
   --border: rgba(255, 255, 255, 0.08);
   --text: #f3f0fa;
   --text-2: #c9c2dc;
-  --muted: #8a83a0;
+  --muted: #a09ab5;
   --accent: #a78bfa;
-  --accent-strong: #8b5cf6;
+  --accent-strong: #7c3aed; /* filled buttons: white text passes 4.5:1 */
+  --accent-deep: #6d28d9;
   --accent-soft: rgba(167, 139, 250, 0.14);
 
   /* In-game cost colors. */
@@ -39,6 +40,7 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
+  --color-accent-deep: var(--accent-deep);
   --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

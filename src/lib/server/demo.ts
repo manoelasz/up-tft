@@ -1,5 +1,6 @@
+import "server-only";
+import { RANKED_QUEUE, type RiotMatch, type RiotParticipant, type RiotTrait, type RiotUnit } from "./riot/types";
 import type { StaticChampion, StaticData } from "./staticData";
-import type { RiotMatch, RiotParticipant, RiotTrait, RiotUnit } from "./types";
 
 // Synthetic matches in the Riot payload shape, built from the current set's real
 // champions so demo mode shows real portraits and runs the same aggregation as
@@ -137,7 +138,7 @@ function matchForSlot(slot: number, archetypes: Archetype[], sd: StaticData): Ri
     info: {
       game_datetime: t,
       game_version: "Demo Version ?.?.?.?",
-      queue_id: 1100,
+      queue_id: RANKED_QUEUE,
       tft_set_number: sd.latestSet,
       participants,
     },

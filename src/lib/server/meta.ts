@@ -1,45 +1,44 @@
+import "server-only";
+import type { MetaSnapshot } from "../types";
 import { aggregate, latestPatchMatches } from "./aggregate";
+import { config, hasRiotKey } from "./config";
 import { demoMatches } from "./demo";
-import { getLeaguePuuids, getMatch, getMatchIds, mapPool, RiotError, type LeagueTier } from "./riot";
+import { getLeaguePuuids, getMatch, getMatchIds } from "./riot/api";
+import { mapPool, RiotError } from "./riot/client";
+import { RANKED_QUEUE, type RiotMatch } from "./riot/types";
 import { getStaticData } from "./staticData";
-import type { MetaSnapshot, RiotMatch } from "./types";
 
-const PLATFORM = process.env.RIOT_PLATFORM ?? "br1";
-const REGION = process.env.RIOT_REGION ?? "americas";
-const LEAGUE = (process.env.RIOT_LEAGUE ?? "challenger") as LeagueTier;
-const PLAYERS = Number(process.env.RIOT_PLAYERS ?? 20);
-const MATCHES_PER_PLAYER = Number(process.env.RIOT_MATCHES_PER_PLAYER ?? 5);
-const MAX_NEW_MATCHES = Number(process.env.RIOT_MAX_NEW_MATCHES ?? 60);
-const MAX_STORED_MATCHES = 1500;
-const RANKED_QUEUE = 1100;
-
-const LIVE_REFRESH_MS = Number(process.env.REFRESH_SECONDS ?? 300) * 1000;
-const DEMO_REFRESH_MS = 60_000;
-
+// The /api/meta snapshot: collects high-elo ranked matches incrementally and re-ranks comps.
+//
 // Module-level cache: survives between requests on a long-running server.
 // On serverless hosts swap this for a KV/DB plus a cron that calls refresh().
+
+const MAX_STORED_MATCHES = 1500;
+const DEMO_REFRESH_MS = 60_000;
+const RETRY_MS = 60_000;
+
+const { platform, cluster, league } = config.meta;
+
 const store = new Map<string, RiotMatch>();
 let snapshot: MetaSnapshot | null = null;
 let inflight: Promise<MetaSnapshot> | null = null;
 
-const hasKey = () => Boolean(process.env.RIOT_API_KEY);
-
 async function buildSnapshot(
   matches: RiotMatch[] | "demo",
-  source: MetaSnapshot["source"],
   refreshMs: number,
   players: number,
   notice?: string,
 ): Promise<MetaSnapshot> {
   const sd = await getStaticData();
+  const source = matches === "demo" ? "demo" : "riot";
   const { patch, matches: current } = latestPatchMatches(matches === "demo" ? demoMatches(sd) : matches);
   const agg = aggregate(current, sd);
   const now = Date.now();
   return {
     source,
     notice,
-    region: PLATFORM.toUpperCase(),
-    league: LEAGUE,
+    region: platform.label,
+    league,
     patch,
     updatedAt: now,
     nextUpdateAt: now + refreshMs,
@@ -51,35 +50,36 @@ async function buildSnapshot(
   };
 }
 
-async function refreshLive(): Promise<MetaSnapshot> {
-  const puuids = await getLeaguePuuids(PLATFORM, LEAGUE, PLAYERS);
-  const idLists = await mapPool(puuids, 5, (p) => getMatchIds(REGION, p, MATCHES_PER_PLAYER));
-  const fresh = [...new Set(idLists.flat())].filter((id) => !store.has(id)).slice(0, MAX_NEW_MATCHES);
-  const matches = await mapPool(fresh, 5, (id) => getMatch(REGION, id));
+/** Fetches only matches not seen before and keeps the newest MAX_STORED_MATCHES. */
+async function collectNewMatches(): Promise<number> {
+  const puuids = await getLeaguePuuids(platform.id, league, config.meta.players);
+  const idLists = await mapPool(puuids, 5, (p) => getMatchIds(cluster, p, config.meta.matchesPerPlayer));
+  const fresh = [...new Set(idLists.flat())].filter((id) => !store.has(id)).slice(0, config.meta.maxNewMatches);
+  const matches = await mapPool(fresh, 5, (id) => getMatch(cluster, id));
   for (const m of matches) if (m.info.queue_id === RANKED_QUEUE) store.set(m.metadata.match_id, m);
 
   if (store.size > MAX_STORED_MATCHES) {
     const oldest = [...store.values()].sort((a, b) => a.info.game_datetime - b.info.game_datetime);
     for (const m of oldest.slice(0, store.size - MAX_STORED_MATCHES)) store.delete(m.metadata.match_id);
   }
-  return buildSnapshot([...store.values()], "riot", LIVE_REFRESH_MS, puuids.length);
+  return puuids.length;
 }
 
 async function refresh(): Promise<MetaSnapshot> {
-  if (!hasKey()) {
-    return buildSnapshot("demo", "demo", DEMO_REFRESH_MS, 0,
-      "Modo demonstração: configure RIOT_API_KEY no .env.local para ver dados reais da Riot.");
+  if (!hasRiotKey()) {
+    return buildSnapshot("demo", DEMO_REFRESH_MS, 0, "Modo demonstração: RIOT_API_KEY não configurada.");
   }
   try {
-    return await refreshLive();
+    const players = await collectNewMatches();
+    return buildSnapshot([...store.values()], config.meta.refreshMs, players);
   } catch (err) {
     console.error("[meta] live refresh failed:", err);
-    if (snapshot?.source === "riot") return { ...snapshot, nextUpdateAt: Date.now() + 60_000 };
+    if (snapshot?.source === "riot") return { ...snapshot, nextUpdateAt: Date.now() + RETRY_MS };
     const reason =
       err instanceof RiotError && (err.status === 401 || err.status === 403)
         ? "A chave da Riot é inválida ou expirou (chaves de desenvolvimento duram 24h)"
         : `Falha ao consultar a Riot API (${(err as Error).message})`;
-    return buildSnapshot("demo", "demo", 60_000, 0, `${reason}. Exibindo dados de demonstração.`);
+    return buildSnapshot("demo", RETRY_MS, 0, `${reason}. Exibindo dados de demonstração.`);
   }
 }
 
@@ -96,6 +96,5 @@ export async function getMetaSnapshot(): Promise<MetaSnapshot> {
       .then((s) => (snapshot = s))
       .finally(() => (inflight = null));
   }
-  if (snapshot) return snapshot;
-  return inflight!;
+  return snapshot ?? inflight!;
 }

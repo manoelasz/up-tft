@@ -1,19 +1,14 @@
 "use client";
 
 import useSWR from "swr";
+import { fetchJson } from "@/lib/fetchJson";
 import type { MetaSnapshot } from "@/lib/types";
 
 const POLL_MS = 60_000;
 
-async function fetcher(url: string): Promise<MetaSnapshot> {
-  const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.json();
-}
-
-/** Shared, polled snapshot; SWR dedupes so every component reads the same request. */
+/** Shared, polled meta snapshot; SWR dedupes so every component reads the same request. */
 export function useMeta() {
-  const { data, error, isValidating, mutate } = useSWR("/api/meta", fetcher, {
+  const { data, error, isValidating, mutate } = useSWR("/api/meta", fetchJson<MetaSnapshot>, {
     refreshInterval: POLL_MS,
     revalidateOnFocus: true,
     keepPreviousData: true,

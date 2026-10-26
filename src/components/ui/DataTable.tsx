@@ -1,48 +1,58 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Card } from "./ui";
+import { Card } from "./Card";
 
 export interface Column<T> {
   key: string;
   label: string;
   render: (row: T) => React.ReactNode;
+  /** Sort value; columns without it aren't sortable. */
   sort?: (row: T) => number | string;
   align?: "left" | "right";
 }
 
-export function StatsTable<T extends { id: string }>({
+type SortState = { key: string; dir: 1 | -1 };
+
+/** Sortable table with a text filter over `searchText(row)`. */
+export function DataTable<T extends { id: string }>({
   rows,
   columns,
   initialSort,
+  searchText,
+  searchPlaceholder = "Buscar…",
 }: {
   rows: T[];
   columns: Column<T>[];
-  initialSort: { key: string; dir: 1 | -1 };
+  initialSort: SortState;
+  searchText: (row: T) => string;
+  searchPlaceholder?: string;
 }) {
   const [sort, setSort] = useState(initialSort);
   const [query, setQuery] = useState("");
 
-  const sorted = useMemo(() => {
-    const col = columns.find((c) => c.key === sort.key);
+  const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
-    const filtered = q ? rows.filter((r) => JSON.stringify(r).toLowerCase().includes(q)) : rows;
-    if (!col?.sort) return filtered;
-    const get = col.sort;
+    const filtered = q ? rows.filter((r) => searchText(r).toLowerCase().includes(q)) : rows;
+    const get = columns.find((c) => c.key === sort.key)?.sort;
+    if (!get) return filtered;
     return [...filtered].sort((a, b) => {
       const va = get(a);
       const vb = get(b);
       return (va < vb ? -1 : va > vb ? 1 : 0) * sort.dir;
     });
-  }, [rows, columns, sort, query]);
+  }, [rows, columns, sort, query, searchText]);
+
+  const toggleSort = (key: string) => setSort((s) => ({ key, dir: s.key === key ? ((-s.dir) as 1 | -1) : 1 }));
 
   return (
-    <Card className="p-0">
+    <Card className="p-0 sm:p-0">
       <div className="border-b border-line p-4">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Buscar…"
+          placeholder={searchPlaceholder}
+          aria-label={searchPlaceholder}
           className="w-full max-w-xs rounded-lg border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-accent/50 focus:outline-none"
         />
       </div>
@@ -51,12 +61,13 @@ export function StatsTable<T extends { id: string }>({
           <thead>
             <tr className="border-b border-line text-xs text-muted">
               {columns.map((c) => (
-                <th key={c.key} className={`px-4 py-3 font-medium ${c.align === "right" ? "text-right" : "text-left"}`}>
+                <th
+                  key={c.key}
+                  aria-sort={sort.key === c.key ? (sort.dir === 1 ? "ascending" : "descending") : undefined}
+                  className={`px-4 py-3 font-medium ${c.align === "right" ? "text-right" : "text-left"}`}
+                >
                   {c.sort ? (
-                    <button
-                      onClick={() => setSort((s) => ({ key: c.key, dir: s.key === c.key ? ((-s.dir) as 1 | -1) : 1 }))}
-                      className="hover:text-ink"
-                    >
+                    <button onClick={() => toggleSort(c.key)} className="hover:text-ink">
                       {c.label} {sort.key === c.key ? (sort.dir === 1 ? "↑" : "↓") : ""}
                     </button>
                   ) : (
@@ -67,7 +78,7 @@ export function StatsTable<T extends { id: string }>({
             </tr>
           </thead>
           <tbody className="tabular">
-            {sorted.map((r) => (
+            {visible.map((r) => (
               <tr key={r.id} className="border-b border-line last:border-0 hover:bg-surface-2/50">
                 {columns.map((c) => (
                   <td key={c.key} className={`px-4 py-2.5 ${c.align === "right" ? "text-right text-ink-2" : "text-ink"}`}>
@@ -78,6 +89,7 @@ export function StatsTable<T extends { id: string }>({
             ))}
           </tbody>
         </table>
+        {visible.length === 0 && <p className="p-6 text-center text-sm text-muted">Nenhum resultado para “{query}”.</p>}
       </div>
     </Card>
   );

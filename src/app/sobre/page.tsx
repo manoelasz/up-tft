@@ -1,4 +1,5 @@
-import { Card, PageHeader } from "@/components/ui";
+import { Card, SectionTitle } from "@/components/ui/Card";
+import { PageHeader } from "@/components/ui/PageHeader";
 
 const STEPS = [
   {
@@ -22,18 +23,18 @@ const STEPS = [
 export default function AboutPage() {
   return (
     <>
-      <PageHeader title="Como funciona" subtitle="De onde vêm os números e como as comps são ranqueadas." />
+      <PageHeader title="Como funciona" subtitle="De onde vêm os números e como as comps são ranqueadas." live={false} />
       <div className="grid gap-4 md:grid-cols-2">
         {STEPS.map((s) => (
           <Card key={s.title}>
-            <h2 className="text-sm font-semibold text-accent">{s.title}</h2>
-            <p className="mt-2 text-sm leading-relaxed text-ink-2">{s.body}</p>
+            <SectionTitle className="text-accent">{s.title}</SectionTitle>
+            <p className="mt-2 text-[15px] leading-relaxed text-ink-2">{s.body}</p>
           </Card>
         ))}
       </div>
       <Card className="mt-4">
-        <h2 className="text-sm font-semibold text-ink">Tiers</h2>
-        <p className="mt-2 text-sm leading-relaxed text-ink-2">
+        <SectionTitle>Tiers</SectionTitle>
+        <p className="mt-2 text-[15px] leading-relaxed text-ink-2">
           Pela taxa de vitória — S: 25% ou mais · A: 18% ou mais · B: 12,5% ou mais (a média, 1 em cada 8) · C: abaixo disso.
         </p>
       </Card>

@@ -1,5 +1,5 @@
 import { connection } from "next/server";
-import { getMetaSnapshot } from "@/lib/meta";
+import { getMetaSnapshot } from "@/lib/server/meta";
 
 export async function GET() {
   // Live data: never prerender, or the build itself would start collecting matches.

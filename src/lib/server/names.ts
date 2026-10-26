@@ -1,3 +1,6 @@
+import "server-only";
+
+// Fallback display names, used when CommunityDragon data is unavailable.
 // Riot ids vary by set: "TFT15_KaiSa", "TFT_Item_InfinityEdge", and in set 18
 // "DA_18_Varus", "DA_KogMaw18_AD", "DA_Riftbeast18", "DA_18_EmblemInvoker".
 // Without a static-data lookup we derive readable names from the id itself.

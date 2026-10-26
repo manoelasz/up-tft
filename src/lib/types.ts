@@ -1,39 +1,5 @@
-// Subset of the Riot TFT match-v1 payload that the aggregator reads.
-export interface RiotTrait {
-  name: string;
-  num_units: number;
-  style: number; // 0 inactive, 1 bronze, 2 silver, 3 gold/unique, 4 prismatic
-  tier_current: number;
-  tier_total: number;
-}
+// Shapes served by the API routes and rendered by the UI.
 
-export interface RiotUnit {
-  character_id: string;
-  itemNames?: string[];
-  rarity: number; // 0,1,2,4,6 -> cost 1,2,3,4,5
-  tier: number; // star level
-}
-
-export interface RiotParticipant {
-  puuid: string;
-  placement: number;
-  level: number;
-  traits: RiotTrait[];
-  units: RiotUnit[];
-}
-
-export interface RiotMatch {
-  metadata: { match_id: string; participants: string[] };
-  info: {
-    game_datetime: number;
-    game_version: string;
-    queue_id: number;
-    tft_set_number: number;
-    participants: RiotParticipant[];
-  };
-}
-
-// Shapes served by /api/meta.
 export interface UnitRef {
   id: string;
   name: string;
@@ -45,11 +11,21 @@ export interface ItemRef {
   id: string;
   name: string;
   icon?: string;
+  components?: ItemRef[]; // recipe, when the item is built from components
 }
 
 export interface FreqEntry extends ItemRef {
   freq: number;
 }
+
+export interface MatchTrait extends ItemRef {
+  units: number; // unit count (typical count for a comp)
+  style: number; // 1 bronze, 2 silver, 3 gold, 4 prismatic
+}
+
+export type Tier = "S" | "A" | "B" | "C";
+
+// ---- /api/meta ----
 
 export interface CompUnit extends UnitRef {
   freq: number; // share of the comp's boards that include this unit
@@ -58,16 +34,9 @@ export interface CompUnit extends UnitRef {
   items: FreqEntry[]; // items this unit usually holds in this comp
 }
 
-export interface MatchTrait extends ItemRef {
-  units: number; // unit count (typical count for a comp)
-  style: number; // 1 bronze, 2 silver, 3 gold, 4 prismatic
-}
-
 export interface CompTrait extends MatchTrait {
   freq: number;
 }
-
-export type Tier = "S" | "A" | "B" | "C";
 
 export interface CompStat {
   id: string;
@@ -107,7 +76,8 @@ export interface MetaSnapshot {
   units: UnitStat[];
 }
 
-// Player profile served by /api/player.
+// ---- /api/player ----
+
 export interface MatchUnit extends UnitRef {
   stars: number;
   items: ItemRef[];
@@ -155,4 +125,9 @@ export interface PlayerProfile {
   comps: PlayerComp[];
   matches: PlayerMatch[];
   updatedAt: number;
+}
+
+/** Error body returned by the API routes. */
+export interface ApiError {
+  error: string;
 }

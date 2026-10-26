@@ -1,8 +1,10 @@
+import "server-only";
+import { config } from "./config";
+
 // Static game data (localized names, icons, ranges, trait breakpoints) from CommunityDragon,
 // which mirrors the live client files. The Riot match API only returns raw ids.
 
 const CDRAGON = "https://raw.communitydragon.org/latest";
-const LOCALE = process.env.CDRAGON_LOCALE ?? "pt_br";
 const TTL_MS = 12 * 3_600_000;
 const RETRY_MS = 5 * 60_000;
 
@@ -27,6 +29,7 @@ export interface StaticItem {
   id: string;
   name: string;
   icon: string;
+  composition: string[]; // component item ids, empty for components and special items
 }
 
 export interface StaticData {
@@ -54,7 +57,7 @@ interface RawTrait {
 }
 
 interface RawData {
-  items: { apiName: string; name: string; icon: string }[];
+  items: { apiName: string; name: string; icon: string; composition?: string[] | null }[];
   sets: Record<string, { champions: RawChampion[]; traits: RawTrait[] }>;
 }
 
@@ -97,7 +100,9 @@ function parse(raw: RawData): StaticData {
       });
     }
   }
-  for (const it of raw.items) items.set(it.apiName, { id: it.apiName, name: it.name, icon: assetUrl(it.icon) });
+  for (const it of raw.items) {
+    items.set(it.apiName, { id: it.apiName, name: it.name, icon: assetUrl(it.icon), composition: it.composition ?? [] });
+  }
 
   return { latestSet, champions, traits, items };
 }
@@ -109,7 +114,7 @@ let inflight: Promise<StaticData | null> | null = null;
 async function load(): Promise<StaticData | null> {
   try {
     // ~25 MB: too big for the fetch cache, so it is parsed once and kept in memory.
-    const res = await fetch(`${CDRAGON}/cdragon/tft/${LOCALE}.json`, { cache: "no-store" });
+    const res = await fetch(`${CDRAGON}/cdragon/tft/${config.staticData.locale}.json`, { cache: "no-store" });
     if (!res.ok) throw new Error(`CommunityDragon HTTP ${res.status}`);
     cached = parse((await res.json()) as RawData);
     expiresAt = Date.now() + TTL_MS;
