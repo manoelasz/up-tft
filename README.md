@@ -19,36 +19,6 @@ Abra http://localhost:3000. Sem chave da Riot o site roda em **modo demonstraç�
 
 Chaves de desenvolvimento expiram a cada 24h e permitem 100 requisições a cada 2 minutos; os valores padrão de coleta (20 jogadores × 5 partidas, até 60 partidas novas por ciclo) cabem nesse limite. Com uma chave de produção, aumente `RIOT_PLAYERS`, `RIOT_MAX_NEW_MATCHES` e os limites `RIOT_RATE_*`.
 
-## Estrutura
-
-```
-src/
-  app/                 rotas (páginas finas + API em app/api)
-  components/
-    ui/                peças genéricas: Card, Stat, PageHeader, DataTable, SegmentedControl…
-    game/              peças do TFT: ChampionIcon, ItemIcon (com receita), TraitChip, Board, badges
-    comps/             card de comp da página inicial
-    champions/         tabela de campeões
-    player/            busca e perfil de jogador
-    layout/            menu lateral
-  hooks/               useMeta, usePlayerProfile, useRecentSearches
-  lib/
-    types.ts           formato dos dados servidos pela API
-    format.ts          números e datas em pt-BR
-    regions.ts         servidores da Riot e parsing de Riot ID
-    board.ts           posicionamento sugerido no tabuleiro
-    server/            só roda no servidor (import "server-only")
-      config.ts        todas as variáveis de ambiente
-      riot/            cliente (rate limit, retry), endpoints e tipos da Riot API
-      staticData.ts    nomes, ícones e receitas do CommunityDragon
-      comps.ts         como uma comp é identificada (sinergia principal + carry)
-      aggregate.ts     ranking das comps e estatísticas de campeões
-      meta.ts          coleta incremental e snapshot do /api/meta
-      player.ts        perfil do /api/player
-      demo.ts          partidas sintéticas para o modo demonstração
-tests/                 testes (Vitest) da lógica pura, com uma partida real anonimizada
-```
-
 - O ranking ordena por taxa de vitória, exigindo um mínimo de partidas (`MIN_COMP_GAMES`).
 - A Riot não informa posições no tabuleiro; o tabuleiro mostra um posicionamento sugerido.
 - Partidas e perfis ficam em memória no servidor; partidas são compartilhadas entre o meta e as buscas.
@@ -71,9 +41,3 @@ tests/                 testes (Vitest) da lógica pura, com uma partida real ano
 | `/campeoes` | Tabela de desempenho dos campeões |
 | `/sobre` | Metodologia |
 
-## Próximos passos para virar SaaS
-
-- Persistir partidas num banco (Postgres/KV) e coletar via cron, em vez de memória do processo — necessário em hosts serverless como a Vercel.
-- Contas, plano pago (alertas de meta, filtros por elo/região) e registro do produto no portal da Riot para obter chave de produção.
-
-Up TFT não é endossado pela Riot Games.
